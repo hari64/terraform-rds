@@ -7,9 +7,9 @@ terraform init
 
 #To plan the changes to be made
 ```
-2. terraform plan
+terraform plan
 ```
 #To build or apply the program
 ```
-3. terraform apply
+terraform apply
 ```
