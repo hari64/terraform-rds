@@ -1,4 +1,8 @@
 #RDS database using mysql
+#provider
+provider "aws" {
+  region = "us-east-1"
+}
 
 #RDS database vpc
 resource "aws_vpc" "db" {
@@ -38,7 +42,7 @@ resource "aws_subnet" "db1" {
   cidr_block        = "10.0.1.0/24"
   availability_zone = "us-east-1a"
   tags = {
-    Name = "db-sub1"
+    Name = "db-subnet-1"
   }
 }
 resource "aws_subnet" "db2" {
@@ -46,7 +50,7 @@ resource "aws_subnet" "db2" {
   cidr_block        = "10.0.2.0/24"
   availability_zone = "us-east-1b"
   tags = {
-    Name = "db-sub2"
+    Name = "db-subnet-2"
   }
 }
 
@@ -106,7 +110,7 @@ resource "aws_db_instance" "default" {
 
   allocated_storage   = 20
   storage_type        = "gp2"
-  db_name             = "quoredb"
+  db_name             = "db-test"
   engine              = "mysql"
   engine_version      = "8.0.32"
   instance_class      = "db.t2.micro"
@@ -118,7 +122,7 @@ resource "aws_db_instance" "default" {
   db_subnet_group_name = aws_db_subnet_group.db.name
 
   tags = {
-    Name = "quoredb"
+    Name = "mysql-db"
   }
 }
 
