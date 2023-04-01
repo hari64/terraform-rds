@@ -13,3 +13,7 @@ terraform plan
 ```
 terraform apply
 ```
+#to destroy the program
+```
+terraform destroy
+```
